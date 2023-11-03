@@ -1,0 +1,324 @@
+﻿@model DashBoardVM;
+<div id="contents" class="sixteen columns">
+    <div class="twelve columns" id="left-content">
+        <div class="row mainwrapper">
+            <div class="pm">
+                <a href="http://www.padmabridge.gov.bd/" target="_blank">
+                    <img src=@Model.Banner6Src width="100%" align="banner">
+                </a>
+            </div>
+            <div class="scroll">
+                <h3>
+                    <marquee direction="left" scrollamount="4" onmouseover="this.stop()" onmouseout="this.start()">
+                        <a href="#">@Model.InstituteName, @Model.InstituteAddress</a>
+                    </marquee>
+                </h3>
+            </div>
+            <div class="row" id="notice-board">
+                <div class="notice-board-bg">
+                    <h2>নোটিশ</h2>
+                    <div id="notice-board-ticker">
+                        <ul style="margin:0">
+                            @if(Model.Notices != null)
+                            {
+                                if(Model.Notices.Count >= 1)
+                                {
+                                    <li style="margin:1px">
+                                        <a asp-area="DashBoard" asp-controller="Notice" asp-action="NoticeDownload" asp-route-id="@Model.Notices[0].Id" target="_blank" style="margin:0"> @Model.Notices[0].Name <i>(@Model.Notices[0].CreatedDate)</i></a>
+                                    </li>
+                                }
+                                if(Model.Notices.Count >= 2)
+                                {
+                                    <li style="margin:1px">
+                                        <a asp-area="DashBoard" asp-controller="Notice" asp-action="NoticeDownload" asp-route-id="@Model.Notices[1].Id" target="_blank" style="margin:0"> @Model.Notices[1].Name <i>(@Model.Notices[1].CreatedDate)</i></a>
+                                    </li>
+                                }
+                                if(Model.Notices.Count >= 3)
+                                {
+                                    <li style="margin:1px">
+                                        <a asp-area="DashBoard" asp-controller="Notice" asp-action="NoticeDownload" asp-route-id="@Model.Notices[2].Id" target="_blank" style="margin:0"> @Model.Notices[2].Name <i>(@Model.Notices[2].CreatedDate)</i></a>
+                                    </li>
+                                }
+                                if(Model.Notices.Count >= 4)
+                                {
+                                    <li style="margin:1px">
+                                        <a asp-area="DashBoard" asp-controller="Notice" asp-action="NoticeDownload" asp-route-id="@Model.Notices[3].Id" target="_blank" style="margin:0"> @Model.Notices[3].Name <i>(@Model.Notices[3].CreatedDate)</i></a>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                        <a class="btn right" asp-area="DashBoard" asp-controller="Notice" asp-action="AllNotice">সকল নোটিশ</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div id="box-1" class="six columns service-box box" style="height: auto;">
+                    <h4>ক্যাম্পাস</h4>
+                    <img src="~/img/icon/campus.png" alt="" width="100" height="" />
+                    <ul class="caption fade-caption" style="margin:0">
+                        <li><a asp-area="DashBoard" asp-controller="Campus" asp-action="AboutOurs">আমাদের সম্পর্কে</a></li>
+                        <li><a asp-area="DashBoard" asp-controller="Campus" asp-action="History">ইতিহাস</a></li>
+                        <li><a asp-area="DashBoard" asp-controller="Campus" asp-action="Aims">লক্ষ্য ও উদ্দেশ্য</a></li>
+                        <li><a asp-area="DashBoard" asp-controller="Campus" asp-action="InstitutionalStructure">প্রাতিষ্ঠানিক কাঠামো</a></li>
+                    </ul>
+                </div>
+                <div id="box-2" class="six columns service-box box" style="height: auto;">
+                    <h4>ভর্তি</h4>
+                    <img src="~/img/icon/admission512x512.png" alt="" width="100" height="" />
+                    <ul class="caption fade-caption" style="margin:0">
+                        <li><a asp-area="DashBoard" asp-controller="Admission" asp-action="HowToApply">কিভাবে আবেদন করতে হবে</a></li>
+                        <li><a asp-area="DashBoard" asp-controller="Admission" asp-action="Application">আবেদন</a></li>
+                        <li><a asp-area="DashBoard" asp-controller="Admission" asp-action="AdmissionTest">ভর্তি পরীক্ষা</a></li>
+                        <li><a asp-area="DashBoard" asp-controller="Admission" asp-action="AdmissionRules">ভর্তি নীতি</a></li>
+                        <li><a asp-area="DashBoard" asp-controller="Admission" asp-action="CurrentAdmissionStructure">বর্তমান শিক্ষা ব্যবস্থা</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div id="box-3" class="six columns service-box box" style="height: auto;">
+                    <h4>প্রশাসন</h4>
+                    <img src="~/img/icon/scholarship.png" alt="" width="100" height="" />
+                    <ul class="caption fade-caption" style="margin:0">
+                        <li><a asp-area="DashBoard" asp-controller="Administration" asp-action="HeadMaster">প্রধান শিক্ষক</a></li>
+                        <li><a asp-area="DashBoard" asp-controller="Administration" asp-action="Chairman">সভাপতি</a></li>
+                        <li><a asp-area="DashBoard" asp-controller="Administration" asp-action="GoverningBody">গভর্নিং বডি</a></li>
+                        <li><a asp-area="DashBoard" asp-controller="Administration" asp-action="TeacherList">শিক্ষকদের তালিকা</a></li>
+                        <li><a asp-area="DashBoard" asp-controller="Administration" asp-action="OfficialsList">কর্মকর্তাদের তালিকা</a></li>
+                        <li><a asp-area="DashBoard" asp-controller="Administration" asp-action="EmployeeList">কর্মচারীদের তালিকা</a></li>
+                    </ul>
+                </div>
+                <div id="box-4" class="six columns service-box box" style="height: auto;">
+                    <h4>একাডেমিক কার্যক্রম</h4>
+                    <img src="~/img/icon/academic_paper.png" alt="" width="100" height="" />
+                    <ul class="caption fade-caption" style="margin:0">
+                        <li><a asp-area="DashBoard" asp-controller="AcademicWork" asp-action="Schedule">শ্রেণিসূচি</a></li>
+                        <li><a asp-area="DashBoard" asp-controller="AcademicWork" asp-action="OnlineSchedule">অনলাইন শ্রেণিসূচি</a></li>
+                        <li><a asp-area="DashBoard" asp-controller="AcademicWork" asp-action="AdmissionSchedule">পরীক্ষার সময়সূচি</a></li>
+                        <li><a asp-area="DashBoard" asp-controller="AcademicWork" asp-action="AcademicSyllabus">একাডেমিক সিলেবাস</a></li>
+                        <li><a asp-area="DashBoard" asp-controller="AcademicWork" asp-action="EducationCalendar">শিক্ষা বর্ষপঞ্জি</a></li>
+                        <li><a asp-area="DashBoard" asp-controller="AcademicWork" asp-action="Prospectus">একাডেমিক প্রসপেক্টর</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div id="box-5" class="six columns service-box box" style="height: auto;">
+                    <h4>শিক্ষার্থী</h4>
+                    <img src="~/img/icon/Examination_ex.png" alt="" width="100" height="" />
+                    <ul class="caption fade-caption" style="margin:0">
+                        <li><a asp-area="DashBoard" asp-controller="Student" asp-action="Uniform">শিক্ষার্থী ইউনিফর্ম</a></li>
+                        <li><a asp-area="DashBoard" asp-controller="Student" asp-action="AdmissionSystem">পরীক্ষা ব্যবস্থা</a></li>
+                        <li><a asp-area="DashBoard" asp-controller="Student" asp-action="Rules">নিয়ম এবং প্রবিধান</a></li>
+                        <li><a asp-area="DashBoard" asp-controller="Student" asp-action="OurStudents">আমাদের শিক্ষার্থী</a></li>
+                        <li><a asp-area="DashBoard" asp-controller="Student" asp-action="SuccessHistory">শিক্ষার্থীদের সাফল্যের গল্প</a></li>
+                        <li><a asp-area="DashBoard" asp-controller="Student" asp-action="DevelopmentProject">উদ্ধাবনী প্রকল্প</a></li>
+                    </ul>
+                </div>
+                <div id="box-6" class="six columns service-box box" style="height: auto;">
+                    <h4>ফলাফল</h4>
+                    <img src="~/img/icon/GPA-512.png" alt="" width="100" height="" />
+                    <ul class="caption fade-caption" style="margin:0">
+                        <li><a href="http://result.jessoreboard.gov.bd/">যশোর বোর্ডের ফলাফল</a></li>
+                        <li><a href="http://www.educationboardresults.gov.bd/">বোর্ড পরীক্ষার ফলাফল</a></li>
+                        <li><a href="https://www.nu.ac.bd/results/">জাতীয় বিশ্ববিদ্যালয়ের ফলাফল</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div id="box-7" class="six columns service-box box" style="height: auto;">
+                    <h4>রিসোর্স</h4>
+                    <img src="~/img/icon/resources-.png" alt="" width="100" height="" />
+                    <ul class="caption fade-caption" style="margin:0">
+                        <li><a asp-area="DashBoard" asp-controller="Resource" asp-action="Library">গ্রন্থাগার</a></li>
+                        <li><a asp-area="DashBoard" asp-controller="Resource" asp-action="ComputerLab">কম্পিউটার ল্যাব</a></li>
+                        <li><a asp-area="DashBoard" asp-controller="Resource" asp-action="PlayGround">খেলার মাঠ</a></li>
+                        <li><a asp-area="DashBoard" asp-controller="Resource" asp-action="IctClub">আইসিটি ক্লাব</a></li>
+                        <li><a asp-area="DashBoard" asp-controller="Resource" asp-action="Bncc">বিএনসিসি</a></li>
+                        <li><a asp-area="DashBoard" asp-controller="Resource" asp-action="RedCrescent">রেড ক্রিসেন্ট</a></li>
+                        <li><a asp-area="DashBoard" asp-controller="Resource" asp-action="RoverScoutt">রোভার স্কাউট</a></li>
+                    </ul>
+                </div>
+                <div id="box-8" class="six columns service-box box" style="height: auto;">
+                    <h4>গ্যালারি</h4>
+                    <img src="~/img/icon/gallery-44-267592.png" alt="" width="100" height="" />
+                    <ul class="caption fade-caption" style="margin:0">
+                        <li><a asp-area="DashBoard" asp-controller="Gallery" asp-action="Image">ছবি গ্যালারী</a></li>
+                         <li><a asp-area="DashBoard" asp-controller="Gallery" asp-action="Vedio">ভিডিও গ্যালারী</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div id="box-7" class="six columns service-box box" style="height: auto;">
+                    <h4>নোটিশ</h4>
+                    <img src="~/img/icon/notice26download.png" alt="" width="100" height="" />
+                    <ul class="caption fade-caption" style="margin:0">
+                        <li><a asp-area="DashBoard" asp-controller="Notice" asp-action="AllNotice">সকল নোটিশ</a></li>
+                        <li><a asp-area="DashBoard" asp-controller="Notice" asp-action="AllAssignment">সকল অ্যাসাইনমেন্ট</a></li>
+                    </ul>
+                </div>
+                <div id="box-8" class="six columns service-box box" style="height: auto;">
+                    <h4>শ্রেণী তালিকা </h4>
+                    <img src="~/img/icon/course-list.png" alt="" width="100" height="" />
+                    <ul class="caption fade-caption" style="margin:0">
+                        <li><a asp-area="DashBoard" asp-controller="Class" asp-action="Six">ষষ্ঠ শ্রেণী</a></li>
+                        <li><a asp-area="DashBoard" asp-controller="Class" asp-action="Seven">সপ্তম শ্রেণী</a></li>
+                        <li><a asp-area="DashBoard" asp-controller="Class" asp-action="Eight">অষ্টম শ্রেণী</a></li>
+                        <li><a asp-area="DashBoard" asp-controller="Class" asp-action="Nine">নবম শ্রেণী</a></li>
+                        <li><a asp-area="DashBoard" asp-controller="Class" asp-action="Ten">দশম শ্রেণী</a></li>
+                    </ul>
+                </div>
+            </div>
+            <br><br>
+            <div class="row">
+                <h4 style="text-align: center;">ভিডিও গ্যালারী</h4>
+                <hr>
+                <div class="six columns" style="text-align: center;">
+                    <div style="padding: 0px;">
+                        <iframe width="310" height="200" src="https://www.youtube.com/embed/p_duWvrDXdw?si=WMQC7xy-E1_w2Tyy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="six columns" style="text-align: center;">
+                    <div style="padding: 0px;">
+                        <iframe width="310" height="200" src="https://www.youtube.com/embed/QYhBmHp-EmA?si=1uJlJmgweemXyZw4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <br>
+            </div>
+        </div>
+    </div>
+    <div class="four columns right-side-bar" id="right-content">
+
+        <div class="column block">
+
+
+            <h5 class="bk-org title" style="text-align: center;">সভাপতি</h5>
+            <p style="text-align:center">
+                <img alt="Principal" src="@Model.ChairmanImage" style="border-style:solid; border-width:0px; height:176px; margin-left:40px; margin-right:40px; width:150px" />
+            </p>
+            <p style="text-align:center">
+                <strong>
+                    <a href="speech.php">
+                        <span style="color:#000000">@Model.ChairmanName</span>
+                    </a>
+                </strong>
+            </p>
+            <p style="text-align:center">
+                <strong style="text-align:center">সভাপতি, গভর্নিং বডি, @Model.InstituteName</strong>
+            </p>
+            <p style="text-align:center;text-decoration:underline;color: Orange;font-size:16px;list-style:none">
+                <a asp-area="DashBoard" asp-controller="Administration" asp-action="Chairman"><strong style="color:Tomato">Details</strong></a>
+            </p>
+            <p>
+            </p>
+        </div>
+        <div class="column block">
+            <h5 class="bk-org title" style="text-align: center;">প্রধান শিক্ষক</h5>
+            <p style="text-align:center">
+                <img alt="Principal" src="@Model.HeadMasterImage" style="border-style:solid; border-width:0px; height:176px; margin-left:40px; margin-right:40px; width:150px" />
+            </p>
+            <p style="text-align:center">
+                <strong>
+                    <a href="speech.php">
+                        <span style="color:#000000">@Model.HeadMasterName</span>
+                    </a>
+                </strong>
+            </p>
+            <p style="text-align:center">
+                <strong>প্রধান শিক্ষক, @Model.InstituteName</strong>
+            </p>
+            <p style="text-align:center;text-decoration:underline;color: Orange;font-size:16px;list-style:none">
+                <a asp-area="DashBoard" asp-controller="Administration" asp-action="HeadMaster"><strong style="color:Tomato">Details</strong></a>
+            </p>
+            <p>
+            </p>
+        </div>
+        <div class="column block">
+            <h5 class="bk-org title" style="text-align: center;  font-size: 15px">সুবর্ণ জয়ন্তী কর্ণার</h5>
+            <ul>
+                <li style="text-align:center">
+                    <a href="id50_albam_photo.php?id=1">
+                        <img alt="imp_hotline" src="~/img/imphotline/id50.png" style="border-style:solid; border-width:0px; height:80px; margin-left:40px; margin-right:40px; width:120px" />
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="column block">
+            <h5 class="bk-org title" style="text-align: center;">গুরুত্বপূর্ণ লিঙ্ক</h5>
+            <ul>
+                <li>
+                    <a href="https://moedu.gov.bd/" style="margin:0"> শিক্ষা মন্ত্রণালয়</a>
+                </li>
+                <li>
+                    <a href="https://www.jessoreboard.gov.bd/" style="margin:0"> মাধ্যমিক ও উচ্চ মাধ্যমিক শিক্ষা বোর্ড, যশোর</a>
+                </li>
+                <li>
+                    <a href="https://bteb.gov.bd/" style="margin:0"> বাংলাদেশ কারিগরি শিক্ষা বোর্ড</a>
+                </li>
+                <li>
+                    <a href="http://www.pmeat.gov.bd/" style="margin:0"> প্রধানমন্ত্রীর শিক্ষা সহায়তা ট্রাস্ট</a>
+                </li>
+                <li>
+                    <a href="https://pmo.gov.bd/" style="margin:0"> প্রধানমন্ত্রীর কার্যালয়</a>
+                </li>
+                <li>
+                    <a href="https://cabinet.gov.bd/" style="margin:0"> মন্ত্রিপরিষদ বিভাগ</a>
+                </li>
+            </ul>
+        </div>
+        <div class="column block">
+            <h5 class="bk-org title" style="text-align: center;">জাতীয় সংগীত</h5>
+            <ul>
+                <li>
+                    <audio controls="" style="width:100%">
+                        <source src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Amar_Sonar_Bangla_-_official_vocal_music_of_the_National_anthem_of_Bangladesh.ogg" type="audio/mp3">
+                    </audio>
+                </li>
+            </ul>
+        </div>
+        <div class="column block">
+            <h5 class="bk-org title" style="text-align: center;">জরুরি হটলাইন</h5>
+            <ul>
+                <p style="text-align:center">
+                    <a>
+                        <img alt="imp_hotline" src="~/img/imphotline/helphotline.jpg" style="border-style:solid; border-width:0px; height:390px; margin-left:15px; margin-right:40px; width:190px" />
+                    </a>
+                </p>
+            </ul>
+        </div>
+        <div class="column block">
+            <h5 class="bk-org title" style="text-align: center;">আমার সরকার</h5>
+            <ul>
+                <p style="text-align:center">
+                    <a href="https://www.mygov.bd/">
+                        <img alt="imp_hotline" src="~/img/imphotline/my_gov.png" style="border-style:solid; border-width:0px; height:110px; margin-left:40px; margin-right:40px; width:140px" />
+                    </a>
+                </p>
+            </ul>
+        </div>
+        <div class="column block">
+            <h5 class="bk-org title" style="text-align: center;">ছবি গ্যালায়ী</h5>
+            <ul>
+                <p style="text-align:center">
+                    <a href="#">
+                        <img alt="imp_hotline" src="~/img/imphotline/albumicon.png" style="border-style:solid; border-width:0px; height:120px; margin-left:40px; margin-right:40px; width:120px" />
+                    </a>
+                </p>
+            </ul>
+        </div>
+
+        <div class="column block">
+            <h5 class="bk-org title"> সামাজিক যোগাযোগ </h5>
+            <a href="#" target="_blank" class="share-buttons">
+                <img src="~/img/logo/facebook.png" alt="" />
+            </a>
+            <a href="#" target="_blank" class="share-buttons">
+                <img src="~/img/logo/youtube.png" alt="ইউটিউব" />
+            </a>
+            <a href="#" target="_blank" class="share-buttons">
+                <img src="~/img/logo/twitter.png" alt="টুইটার" />
+            </a>
+        </div>
+
+    </div>
+    <div class="clearfix"></div>
+</div>

@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ওসমানপুর প্রাগপুর মাধ্যমিক বিদ্যালয়</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Web.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/alertify.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/jquery-confirm.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css" asp-append-version="true">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color:#137ea7!important">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="navbar-brand" asp-area="Admin" asp-controller="AdminPanel" asp-action="Index">হোম</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">নোটিশ</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background: #08678c;">
+                            <a class="dropdown-item" asp-area="Admin" asp-controller="Notice" asp-action="Index">নোটিশ তালিকা</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">গভর্নিং বডি</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background: #08678c;">
+                                <a class="dropdown-item" asp-area="Admin" asp-controller="Chairman" asp-action="Index">সভাপতি</a>
+                                <a class="dropdown-item" asp-area="Admin" asp-controller="AssistantChairman" asp-action="Index">সহ-সভাপতি</a>
+                                <a class="dropdown-item" asp-area="Admin" asp-controller="CommetteeMember" asp-action="Index">সদস্য</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">শিক্ষক</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background: #08678c;">
+                                <a class="dropdown-item" asp-area="Admin" asp-controller="HeadMaster" asp-action="Index">প্রধান শিক্ষক</a>
+                                <a class="dropdown-item" asp-area="Admin" asp-controller="AssistantTeacher" asp-action="Index">সহকারী শিক্ষক</a>
+                                <a class="dropdown-item" asp-area="Admin" asp-controller="Teacher" asp-action="Index">শিক্ষক</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">কর্মকর্তা</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background: #08678c;">
+                                <a class="dropdown-item" asp-area="Admin" asp-controller="Officials" asp-action="Index">কর্মকর্তা</a>
+                                <a class="dropdown-item" asp-area="Admin" asp-controller="Employee" asp-action="Index">কর্মচারী</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ব্যানার</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background: #08678c;">
+                            <a class="dropdown-item" asp-area="Admin" asp-controller="Banner" asp-action="BannerList">ব্যানার তালিকা</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ক্যাম্পাস</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background: #08678c;">
+                                <a class="dropdown-item" asp-area="Admin" asp-controller="Campus" asp-action="AboutOurs">আমাদের সম্পর্কে</a>
+                                <a class="dropdown-item" asp-area="Admin" asp-controller="Campus" asp-action="History">ইতিহাস</a>
+                                <a class="dropdown-item" asp-area="Admin" asp-controller="Campus" asp-action="Aims">লক্ষ্য ও উদ্দেশ্য</a>
+                                <a class="dropdown-item" asp-area="Admin" asp-controller="Campus" asp-action="InstitutionalStructure">প্রাতিষ্ঠানিক কাঠামো</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">বানী</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background: #08678c;">
+                                <a class="dropdown-item" asp-area="Admin" asp-controller="Speech" asp-action="HeadMasterSpeech">প্রধান শিক্ষকের বানী</a>
+                                <a class="dropdown-item" asp-area="Admin" asp-controller="Speech" asp-action="ChairmanSpeech">সভাপতির বানী</a>
+                        </div>
+                    </li>
+                </ul>
+                <partial name="_LoginPartial" />
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <script src="~/js/jquery-3.7.1.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/alertify.min.js"></script>
+    <script src="~/js/jquery-confirm.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

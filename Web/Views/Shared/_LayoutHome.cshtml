@@ -1,0 +1,355 @@
+﻿@model DashBoardVM;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>@Model.InstituteName</title>
+    <meta name="description" content="@Model.InstituteName">
+    <meta name="keywords" content="@Model.InstituteName" />
+    <meta name="author" content="GAMC" />
+    <meta name='designer' content='' />
+    <meta name='coverage' content='Worldwide' />
+    <meta name='distribution' content='Global' />
+    <meta name='rating' content='General' />
+    <meta name='robots' content='index,follow' />
+    <meta name="description" content="@Model.InstituteName" />
+    <link rel="icon" href="~/img/logo/AMC_Logo(200).png">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800" rel="stylesheet">
+    <link href="~/css/base.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/skeleton.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/style.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/meganizr.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/flaticon.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/style2.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/jquery.fancybox.min.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/all.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/sticky.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/responsiveslides.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/responsive.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/accessibility.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/layoutHome.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/yoxview.css" rel="stylesheet" asp-append-version="true" />
+</head>
+<style type="text/css">
+    .drop-one-columns .one-col a {
+        display: block;
+        border-bottom: 1px solid #ccc;
+        white-space: nowrap;
+    }
+    .drop-one-columns .one-col a:hover {
+        border-bottom: 1px solid #ccc !important;
+        background-color: #ebccaccf !important;
+    }
+</style>
+<body id="page-top" class="GAMC">
+    <a class="skip-link" href="#jmenu">Jump to Menu</a>
+    <a class="skip-link" href="#btnLang">Jump to Language</a>
+    <div class="container">
+        <div class="sixteen columns" style="background-color: #06b38f; box-shadow: 0 1px 5px #999999;height:40px;">
+            <div style="display: inline-block;float: left;width: 960px;border-bottom: 4px solid #08e5c5;">
+                <marquee direction="left" scrollamount="4" onmouseover="this.stop()" onmouseout="this.start()">
+                    <a href="#" style="font-weight:bold;color:#fff">@Model.InstituteName, @Model.InstituteAddress</a>
+                </marquee>
+            </div>
+        </div>
+        <div class="sixteen columns">
+            <div class="header-site-info" id="header-site-info">
+            </div>
+            <div class="callbacks_container" style="box-shadow: 0 1px 5px #999999;">
+                <ul class="rslides" id="front-image-slider">
+                    <li>
+                        <img src=@Model.Banner1Src alt="" width="960" height="220" style="object-fit:cover" />
+                    </li>
+                    <li>
+                        <img src=@Model.Banner2Src alt="" width="960" height="220" style="object-fit:cover" />
+                    </li>
+                    <li>
+                        <img src=@Model.Banner3Src alt="" width="960" height="220" style="object-fit:cover" />
+                    </li>
+                    <li>
+                        <img src=@Model.Banner4Src alt="" width="960" height="220" style="object-fit:cover" />
+                    </li>
+                    <li>
+                        <img src=@Model.Banner5Src alt="" width="960" height="220" style="object-fit:cover" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="sixteen columns" id="jmenu">
+            <div class="sixteen columns" id="nav_mn">
+                <a href="javascript:;" class="show-menu menu-head"> মেনু নির্বাচন করুন</a>
+                <div role="navigation" id="dawgdrops">
+                    <ul class="meganizr mzr-slide mzr-responsive">
+                        <li class="col0"><a title="Home" asp-area="DashBoard" asp-controller="Dashboard" asp-action="Index" style="background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAYCAYAAADpnJ2CAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAqBJREFUeNq0lV2ITGEYx51xDOMz8lku0KKoyYVwITfEDRdCpJkSrbRkW1ry0VokFKJcIPlo5MLNXCjfV26UGx9xgUVZrCIydncGuzt+z/afOh3n7J4x661fZ+bMO8/n/3lfJ5VK9fuHNUjPQiaTKeuPsTId9YdZsBVqYGY6nY79L4cDYSmcgVpxAhbjdEBUI07Ekg6HDbAdPsJRcJXpCDgJl2EyzFEl3sFDSt7mNeRGKOFUOVoO9+EAPNbvb2A37IVxME0Oze4z2AZvozq0Es6HRpgC5+GsCQXqoROuKBjr51oYpd8t0NHwV6ndkKyGwipF+BPq4AZUqXwmnLyeR2A/PIItMFZ2fkNXb6JxlU2jyvQSNsNdWAbnVLIOBbZAASxSQPWecncHjqCcMIe2Ya4MrISrsAeaFflhGA85ObTofynrfbAemvT5mnraAPO8o1P6YPVeox5VKbtjCqJBI2BO2n0VKap0gxXUTu07BMclIktgBU5HdmeVTCaH8dwEB6W6XXALlkiBC+GzjDs9iKxTPTVVv4ebaslsWG3BZrPZp9azuI4qK8MpaIFq2Ahj4JMyjbLa1OOJcEFtaZaKTfVxK+lXOA074IWGt1pl/laGs9IqyOE6ezL4z1W1S9Z/V6X64jtV8upXUAkdz/ui8K/SSCTsC05zPc1hV9D8eJT8Q1k4OtbckP2BdtwySpWQmC5CqxQ+XYKbpKx6XW4Z15JldgceeN43SZkz4HtfXk+OMvBn0SHiIb2s+AKueMVC3jl9YNsJshPkMKf3sQoTcQKOwkCjryWOos7IEomQQ8CEN8S318bhNnyIotJWnTx2Dk7wBGZGXgWo94lukoLnvZ2l9xj49qhj0aJzMOG7GfK+ffb9uubTq9I8zgLn8o8AAwCrPa01oBAHBgAAAABJRU5ErkJggg==');margin-top:5px;"></a></li>
+                        <li class="col1 mzr-drop">
+                            <a href="#" class="col1 submenu">ক্যাম্পাস</a>
+                            <div class="drop-one-columns">
+                                <div class="one-col">
+                                    <ul class="mzr-links">
+                                        <li><a asp-area="DashBoard" asp-controller="Campus" asp-action="AboutOurs">আমাদের সম্পর্কে</a></li>
+                                        <li><a asp-area="DashBoard" asp-controller="Campus" asp-action="History">ইতিহাস</a></li>
+                                        <li><a asp-area="DashBoard" asp-controller="Campus" asp-action="Aims">লক্ষ্য ও উদ্দেশ্য</a></li>
+                                        <li><a asp-area="DashBoard" asp-controller="Campus" asp-action="InstitutionalStructure">প্রাতিষ্ঠানিক কাঠামো</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="col2 mzr-drop">
+                            <a href="#" class="col2 submenu">প্রশাসন</a>
+                            <div class="drop-one-columns">
+                                <div class="one-col">
+                                    <ul class="mzr-links">
+                                        <li><a asp-area="DashBoard" asp-controller="Administration" asp-action="HeadMaster">প্রধান শিক্ষক</a></li>
+                                        <li><a asp-area="DashBoard" asp-controller="Administration" asp-action="Chairman">সভাপতি</a></li>
+                                        <li><a asp-area="DashBoard" asp-controller="Administration" asp-action="GoverningBody">গভর্নিং বডি</a></li>
+                                        <li><a asp-area="DashBoard" asp-controller="Administration" asp-action="TeacherList">শিক্ষকদের তালিকা</a></li>
+                                        <li><a asp-area="DashBoard" asp-controller="Administration" asp-action="OfficialsList">কর্মকর্তাদের তালিকা</a></li>
+                                        <li><a asp-area="DashBoard" asp-controller="Administration" asp-action="EmployeeList">কর্মচারীদের তালিকা</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="col3 mzr-drop">
+                            <a href="#" class="col3 submenu">শ্রেণী তালিকা</a>
+                            <div class="drop-one-columns">
+                                <div class="one-col">
+                                    <ul class="mzr-links">
+                                        <li><a asp-area="DashBoard" asp-controller="Class" asp-action="Six">ষষ্ঠ শ্রেণী</a></li>
+                                        <li><a asp-area="DashBoard" asp-controller="Class" asp-action="Seven">সপ্তম শ্রেণী</a></li>
+                                        <li><a asp-area="DashBoard" asp-controller="Class" asp-action="Eight">অষ্টম শ্রেণী</a></li>
+                                        <li><a asp-area="DashBoard" asp-controller="Class" asp-action="Nine">নবম শ্রেণী</a></li>
+                                        <li><a asp-area="DashBoard" asp-controller="Class" asp-action="Ten">দশম শ্রেণী</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="col4 mzr-drop">
+                            <a href="#" class="col4 submenu">অফিস</a>
+                            <div class="drop-one-columns">
+                                <div class="one-col">
+                                    <ul class="mzr-links">
+                                        <li><a asp-area="DashBoard" asp-controller="Office" asp-action="OfficeDetails">অফিস</a></li>
+                                        <li><a asp-area="DashBoard" asp-controller="Office" asp-action="Officials">কর্মকর্তা</a></li>
+                                        <li><a asp-area="DashBoard" asp-controller="Office" asp-action="Employee">কর্মচারী</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="col5 mzr-drop">
+                            <a href="#" class="col5 submenu">ভর্তি</a>
+                            <div class="drop-one-columns">
+                                <div class="one-col">
+                                    <ul class="mzr-links">
+                                        <li><a asp-area="DashBoard" asp-controller="Admission" asp-action="HowToApply">কিভাবে আবেদন করতে হবে</a></li>
+                                        <li><a asp-area="DashBoard" asp-controller="Admission" asp-action="Application">আবেদন</a></li>
+                                        <li><a asp-area="DashBoard" asp-controller="Admission" asp-action="AdmissionTest">ভর্তি পরীক্ষা</a></li>
+                                        <li><a asp-area="DashBoard" asp-controller="Admission" asp-action="AdmissionRules">ভর্তি নীতি</a></li>
+                                        <li><a asp-area="DashBoard" asp-controller="Admission" asp-action="CurrentAdmissionStructure">বর্তমান শিক্ষা ব্যবস্থা</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="col6 mzr-drop">
+                            <a href="#" class="col6 submenu">একাডেমিক কার্যক্রম</a>
+                            <div class="drop-one-columns">
+                                <div class="one-col">
+                                    <ul class="mzr-links">
+                                        <li><a asp-area="DashBoard" asp-controller="Academic" asp-action="Schedule">শ্রেণিসূচি</a></li>
+                                        <li><a asp-area="DashBoard" asp-controller="Academic" asp-action="OnlineSchedule">অনলাইন শ্রেণিসূচি</a></li>
+                                        <li><a asp-area="DashBoard" asp-controller="Academic" asp-action="AdmissionSchedule">পরীক্ষার সময়সূচি</a></li>
+                                        <li><a asp-area="DashBoard" asp-controller="Academic" asp-action="AcademicSyllabus">একাডেমিক সিলেবাস</a></li>
+                                        <li><a asp-area="DashBoard" asp-controller="Academic" asp-action="EducationCalendar">শিক্ষা বর্ষপঞ্জি</a></li>
+                                        <li><a asp-area="DashBoard" asp-controller="Academic" asp-action="Prospectus">একাডেমিক প্রসপেক্টর</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="col7 mzr-drop">
+                            <a href="#" class="col7 submenu">শিক্ষার্থী</a>
+                            <div class="drop-one-columns">
+                                <div class="one-col">
+                                    <ul class="mzr-links">
+                                        <li><a asp-area="DashBoard" asp-controller="Student" asp-action="Uniform">শিক্ষার্থী ইউনিফর্ম</a></li>
+                                        <li><a asp-area="DashBoard" asp-controller="Student" asp-action="AdmissionSystem">পরীক্ষা ব্যবস্থা</a></li>
+                                        <li><a asp-area="DashBoard" asp-controller="Student" asp-action="Rules">নিয়ম এবং প্রবিধান</a></li>
+                                        <li><a asp-area="DashBoard" asp-controller="Student" asp-action="OurStudents">আমাদের শিক্ষার্থী</a></li>
+                                        <li><a asp-area="DashBoard" asp-controller="Student" asp-action="SuccessHistory">শিক্ষার্থীদের সাফল্যের গল্প</a></li>
+                                        <li><a asp-area="DashBoard" asp-controller="Student" asp-action="DevelopmentProject">উদ্ধাবনী প্রকল্প</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="col8 mzr-drop">
+                            <a href="#" class="col8 submenu">ফলাফল</a>
+                            <div class="drop-one-columns">
+                                <div class="one-col">
+                                    <ul class="mzr-links">
+                                        <li><a href="http://result.jessoreboard.gov.bd/">যশোর বোর্ডের ফলাফল</a></li>
+                                        <li><a href="http://www.educationboardresults.gov.bd/">বোর্ড পরীক্ষার ফলাফল</a></li>
+                                        <li><a href="https://www.nu.ac.bd/results/">জাতীয় বিশ্ববিদ্যালয়ের ফলাফল</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="col9 mzr-drop">
+                            <a href="#" class="col9 submenu">রিসোর্স</a>
+                            <div class="drop-one-columns">
+                                <div class="one-col">
+                                    <ul class="mzr-links">
+                                        <li><a asp-area="DashBoard" asp-controller="Resource" asp-action="Library">গ্রন্থাগার</a></li>
+                                        <li><a asp-area="DashBoard" asp-controller="Resource" asp-action="ComputerLab">কম্পিউটার ল্যাব</a></li>
+                                        <li><a asp-area="DashBoard" asp-controller="Resource" asp-action="PlayGround">খেলার মাঠ</a></li>
+                                        <li><a asp-area="DashBoard" asp-controller="Resource" asp-action="IctClub">আইসিটি ক্লাব</a></li>
+                                        <li><a asp-area="DashBoard" asp-controller="Resource" asp-action="Bncc">বিএনসিসি</a></li>
+                                        <li><a asp-area="DashBoard" asp-controller="Resource" asp-action="RedCrescent">রেড ক্রিসেন্ট</a></li>
+                                        <li><a asp-area="DashBoard" asp-controller="Resource" asp-action="RoverScoutt">রোভার স্কাউট</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="col1 mzr-drop">
+                            <a href="#" class="col1 submenu">গ্যালারি</a>
+                            <div class="drop-one-columns">
+                                <div class="one-col">
+                                    <ul class="mzr-links">
+                                        <li><a asp-area="DashBoard" asp-controller="Gallery" asp-action="Image">ছবি গ্যালারী</a></li>
+                                        <li><a asp-area="DashBoard" asp-controller="Gallery" asp-action="Vedio">ভিডিও গ্যালারী</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="col2 mzr-drop" style="margin-right:-8px">
+                            <a href="#" class="col2 submenu">নোটিশ কর্নার</a>
+                            <div class="drop-one-columns">
+                                <div class="one-col">
+                                    <ul class="mzr-links">
+                                        <li><a asp-area="DashBoard" asp-controller="Notice" asp-action="AllNotice">সকল নোটিশ</a></li>
+                                        <li><a asp-area="DashBoard" asp-controller="Notice" asp-action="AllAssignment">সকল অ্যাসাইনমেন্ট</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container maincontainer">
+        @RenderBody()
+    </div>
+    <footer class="sticky-footer bg-white">
+        <div class="footer-artwork" id="footer-artwork">&nbsp;</div>
+        <div class="footer-wrapper full-width" id="footer-wrapper">
+            <div id="footer-menu">
+                <span style="font-weight: bold;">@Model.InstituteName</span>
+                <br>
+                <span>@Model.InstitutePostalAddress, @Model.InstituteAddress</span>
+            </div>
+            <div class="footer-credit" id="footer">
+                <br>
+                <span style="font-weight: bold; font-size: 14px;"><a href="/Identity/Account/Login">লগ ইন</a></span>
+                <br>
+                <span style="font-weight: bold; font-size: 14px;"><a href="">কপিরাইট ©@DateTime.Now.Year @Model.InstituteName</a></span>
+            </div>
+        </div>
+    </footer>
+    <script src="~/js/homePage.js/jquery-1.11.1.min.js" asp-append-version="true"></script>
+    <script src="~/js/homePage.js/all-scripts.js" asp-append-version="true"></script>
+    <script src="~/js/homePage.js/jquery.fancybox.min.js" asp-append-version="true"></script>
+    <script src="~/js/homePage.js/jquery-accessibleMegaMenu.js" asp-append-version="true"></script>
+    <script src="~/js/homePage.js/responsiveslides.min.js" asp-append-version="true"></script>
+    <script src="~/js/homePage.js/jquery.vticker.js" asp-append-version="true"></script>
+    <script src="~/js/homePage.js/utils.js" asp-append-version="true"></script>
+    <script src="~/js/homePage.js/yoxview-init.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var wi = $(window).width();
+            if (wi < 980) {
+                $('#jmenu .show-menu').click(function() {
+                    $(".mzr-responsive").slideToggle(400, "linear");
+                    $('.drop-one-columns').slideUp();
+                });
+                $('.submenu').on('click', function(e) {
+                    e.preventDefault();
+                    let parent = $(this).parent('.mzr-drop');
+                    parent.siblings('.mzr-drop').find('.drop-one-columns').slideUp();
+                    $(this).next('.drop-one-columns ').slideToggle();
+                    console.log(parent.siblings().find('.drop-one-columns'))
+                })
+            }
+        });
+        $(window).on('load', () => {
+            if ($(window).width() >= 980) {
+                $('.mzr-drop').each((idx, item) => {
+                    let submenu = $(item).find('.submenu');
+                    let rgb = $(submenu).css('color');
+                    let dropdown = submenu.next('.drop-one-columns');
+                    dropdown.attr('style', `border-top: 5px solid ${rgb}`)
+                })
+            }
+        })
+        $(function() {
+            function initNewsTicker(id, options) {
+
+                var $scroller = $(id);
+                $scroller.vTicker('init', options);
+
+                $("#bdes-ticker .next").click(function(event) {
+                    event.preventDefault();
+                    var checked = true;
+                    $('#bdes-ticker').vTicker('next', { animate: checked });
+                });
+                $("#bdes-ticker .prev,#bdes-ticker .next").hover(function() {
+                    $('#bdes-ticker').vTicker('next', { animate: checked });
+                    $scroller.vTicker('pause', true);
+                }, function() {
+                    $('#bdes-ticker').vTicker('next', { animate: checked });
+                    $scroller.vTicker('pause', false);
+                });
+                $("#bdes-ticker .prev").click(function(event) {
+                    event.preventDefault();
+                    var checked = true;
+                    $('#bdes-ticker').vTicker('prev', { animate: checked });
+                });
+            }
+
+            function initNoticeBoardTicker(id, options) {
+
+                var $scroller = $(id);
+                $scroller.vTicker('init', options);
+
+                $("#notice-board-ticker .next").click(function(event) {
+                    event.preventDefault();
+                    var checked = true;
+                    $('#notice-board-ticker').vTicker('next', { animate: false });
+                });
+                $("#notice-board-ticker .prev,#notice-board-ticker .next").hover(function() {
+                    $scroller.vTicker('pause', true);
+                }, function() {
+                    $scroller.vTicker('pause', false);
+                });
+                $("#notice-board-ticker .prev").click(function(event) {
+                    event.preventDefault();
+                    var checked = true;
+                    $('#notice-board-ticker').vTicker('prev', { animate: checked });
+                });
+            }
+            initNewsTicker('#bdes-ticker', {});
+        });
+
+        window.addEventListener('scroll', function() {
+            let navbar = document.getElementById("nav_mn");
+
+            if (window.pageYOffset >= 223) {
+                navbar.classList.add('sticky');
+            } else {
+                navbar.classList.remove('sticky');
+            }
+        });
+    </script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

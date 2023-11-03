@@ -1,0 +1,36 @@
+﻿@model DashBoardVM;
+
+<div id="contents" class="sixteen columns">
+    <h3 style="text-align: center;"> সকল নোটিশ </h3>
+    <hr />
+    <div class="sixteen columns">
+        <div style="text-align: justify;">
+            <div class="row">
+                
+            <div class="col-12">
+                <table class="table" id="Tables_id" style="width:100%">
+                <thead>
+                    <tr>
+                        <td style="text-align: center;">ক্রমিক</td>
+                        <td style="text-align: center;">শিরোনাম</td>
+                        <td style="text-align: center;">প্রকাশের তারিখ</td>
+                        <td style="text-align: center;">ডাউনলোড</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Notices)
+                        {
+                            <tr>
+                                <td style="text-align: center;">@item.Serial</td>
+                                <td style="text-align: center;">@item.Name</td>
+                                <td style="text-align: center;">@item.CreatedDate</td>
+                                <td style="text-align: center;cursor:pointer"><a asp-area="DashBoard" asp-controller="Notice" asp-action="NoticeDownload" asp-route-id="@item.Id" target="_blank"><img src="/img/icon/pdf.png" width="40" height="40" /></a></td>
+                            </tr>
+                        }
+                </tbody>
+            </table>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
